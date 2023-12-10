@@ -1,0 +1,8 @@
+# Ignore these files
+*.txt
+*.odt
+
+# Ignore the previous rules also in subdirectories
+**/*.txt
+**/*.odt
+
