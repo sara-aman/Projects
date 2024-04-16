@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH -J sproth_b1
-#SBATCH -o sproth_b1_%A_%a.out
-#SBATCH -e sproth_b1_%A_%a.err
+#SBATCH -J sproth_b2
+#SBATCH -o sproth_b2_%A_%a.out
+#SBATCH -e sproth_b2_%A_%a.err
 #SBATCH --get-user-env
 #SBATCH --partition=compms-cpu-big
 #SBATCH --nodes=1
@@ -10,7 +10,7 @@
 #SBATCH --export=NONE
 #SBATCH --mail-user=sara.aman@tum.de
 #SBATCH --time=30-00:00:00
-#SBATCH --array=0-211%10
+#SBATCH --array=0-211%12
 #================== PARAMS ===================#
 # Change This
 MQPAR_DIR="/cmnfs/data/proteomics/metaproteomics/PXD011515_sara_analysis/sprotH"
