@@ -1,8 +1,11 @@
 # Ignore these files
 *.txt
 *.odt
+*.out
+*.err
 
-# Ignore the previous rules also in subdirectories
+# also in subdirectories
 **/*.txt
 **/*.odt
-
+**/*.out
+**/*.err
