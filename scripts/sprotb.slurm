@@ -1,16 +1,16 @@
 #!/bin/bash
-#SBATCH -J sprotb_b4
-#SBATCH -o sprotb_b4_%A_%a.out
-#SBATCH -e sprotb_b4_%A_%a.err
+#SBATCH -J sprotb_b5
+#SBATCH -o sprotb_b5_%A_%a.out
+#SBATCH -e sprotb_b5_%A_%a.err
 #SBATCH --get-user-env
-#SBATCH --partition=compms-cpu-big
+#SBATCH --partition=shared-cpu
 #SBATCH --nodes=1
 #SBATCH --mem=16GB
 #SBATCH --cpus-per-task=4
 #SBATCH --export=NONE
 #SBATCH --mail-user=sara.aman@tum.de
-#SBATCH --time=30-00:00:00
-#SBATCH --array=0-77%15
+#SBATCH --time=4-00:00:00
+#SBATCH --array=0-77%10
 #================== PARAMS ===================#
 # Change This
 MQPAR_DIR="/cmnfs/data/proteomics/metaproteomics/PXD011515_sara_analysis/sprotB"
