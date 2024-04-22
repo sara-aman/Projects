@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -J ok_sb_766
-#SBATCH -o ok_sb_766_%A_%a.out
-#SBATCH -e ok_sb_766_%A_%a.err
+#SBATCH -o ok_sb_766.out
+#SBATCH -e ok_sb_766.err
 #SBATCH --cpus-per-task=4         		 # should be max(cpus_on_node, number of spectra files)
 #SBATCH --partition=shared-cpu
 #SBATCH --mem=16G                 		 # ~3GB per spectra file in parallel, i.e. 3*CPUs
@@ -9,7 +9,6 @@
 #SBATCH --get-user-env
 #SBATCH --export=NONE
 #SBATCH --mail-user=sara.aman@tum.de
-#SBATCH --array=0		 # this email will receive notification about the job
 # ================ SETUP ================ #
 . /cmnfs/home/s.aman/miniconda3/etc/profile.d/conda.sh
 conda activate oktoberfest
@@ -17,19 +16,19 @@ module load percolator/3.6.1 thermorawfileparser/1.4.3
 # DO NOT CHANGE THIS, only change with --cpus-per-task above!
 NUM_THREADS=$SLURM_CPUS_PER_TASK
 # =============== CONFIG ================ #
-input_dir="/cmnfs/data/proteomics/metaproteomics/PXD011515_sara_analysis/sprotB"
+input_dir="/cmnfs/data/proteomics/metaproteomics/PXD011515_sara_analysis/sprotB/766"
 # List of patient IDs
-PATIENT_IDS=(766)
+#PATIENT_IDS=(766)
 
 cat > rescoring_config.json << EOL
 {
     "type": "Rescoring",
     "tag": "",
-    "output": "$input_dir/${PATIENT_IDS[$SLURM_ARRAY_TASK_ID]}/oktoberfest_output",
+    "output": "$input_dir/oktoberfest_output",
     "inputs": {
-        "search_results": "$input_dir/${PATIENT_IDS[$SLURM_ARRAY_TASK_ID]}/combined/txt/msms.txt",
+        "search_results": "$input_dir/combined/txt/msms.txt",
         "search_results_type": "Maxquant",
-        "spectra":"$input_dir/${PATIENT_IDS[$SLURM_ARRAY_TASK_ID]}",
+        "spectra":"$input_dir",
         "spectra_type": "raw"
     },
     "models": {
