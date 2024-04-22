@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH -J ok_sh_b4
-#SBATCH -o ok_sh_b4_%A_%a.out
-#SBATCH -e ok_sh_b4_%A_%a.err
+#SBATCH -J ok_sh_b6
+#SBATCH -o ok_sh_b6_%A_%a.out
+#SBATCH -e ok_sh_b6_%A_%a.err
 #SBATCH --cpus-per-task=4         		 # should be max(cpus_on_node, number of spectra files)
 #SBATCH --partition=shared-cpu
 #SBATCH --mem=16G                 		 # ~3GB per spectra file in parallel, i.e. 3*CPUs
@@ -19,7 +19,7 @@ NUM_THREADS=$SLURM_CPUS_PER_TASK
 # =============== CONFIG ================ #
 input_dir="/cmnfs/data/proteomics/metaproteomics/PXD011515_sara_analysis/sprotH"
 # List of patient IDs
-PATIENT_IDS=(130)
+PATIENT_IDS=(805)
 
 cat > rescoring_config.json << EOL
 {
